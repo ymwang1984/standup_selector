@@ -32,7 +32,6 @@
   let flashingEmployee = null;
   let isSelecting = false;
 
-  // Start the selection process
   const pickRandomEmployee = () => {
     if (isSelecting) return;
 
@@ -43,19 +42,17 @@
     let iterations = 0;
     const maxIterations = 30;
 
-    // Flash names before stopping on the selected employee
     const interval = setInterval(() => {
       flashingEmployee = employees[Math.floor(Math.random() * employees.length)];
       iterations++;
 
-      // Stop after the max iterations
       if (iterations >= maxIterations) {
         clearInterval(interval);
         selectedEmployee = flashingEmployee;
         flashingEmployee = null;
         isSelecting = false;
       }
-    }, 100); // Adjust speed of flashing (100ms per step)
+    }, 100);
   };
 </script>
 
@@ -66,8 +63,8 @@
   }
 
   .employee-photo {
-    width: 150px;
-    height: 150px;
+    width: 350px;
+    height: 350px;
     border-radius: 50%;
     margin: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -108,7 +105,6 @@
 <div class="selector-container">
   <h1>Standup Selector</h1>
 
-  <!-- Flashing employee -->
   {#if flashingEmployee}
     <div class="flash">
       <img
@@ -120,7 +116,6 @@
     </div>
   {/if}
 
-  <!-- Final selected employee -->
   {#if selectedEmployee && !flashingEmployee}
     <div>
       <img
@@ -132,7 +127,6 @@
     </div>
   {/if}
 
-  <!-- Selection button -->
   <button on:click={pickRandomEmployee} disabled={isSelecting}>
     {isSelecting ? 'Selecting...' : 'Pick Next'}
   </button>
