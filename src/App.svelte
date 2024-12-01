@@ -68,8 +68,8 @@
   }
 
   .employee-photo {
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     margin: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -108,22 +108,23 @@
 
   .selected-list {
     display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
     margin-top: 20px;
-    gap: 10px;
   }
 
   .selected-item {
     text-align: center;
-    flex: 0 0 auto;
+    flex: 0 1 150px; /* Control item width */
   }
 </style>
 
 <div class="selector-container">
   <h1>Standup Selector</h1>
 
+  <!-- Flashing employee -->
   {#if flashingEmployee}
     <div class="flash">
       <img
@@ -135,6 +136,7 @@
     </div>
   {/if}
 
+  <!-- Final selected employee -->
   {#if selectedEmployee && !flashingEmployee}
     <div>
       <img
@@ -150,6 +152,7 @@
     {isSelecting ? 'Selecting...' : employees.length === 0 ? 'Winner!!' : 'Pick Next'}
   </button>
 
+  <!-- Display selected employees -->
   <div>
     <h2>Teammates Picked</h2>
     <div class="selected-list">
