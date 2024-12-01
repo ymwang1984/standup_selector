@@ -1,14 +1,32 @@
 <script>
   import { onMount } from 'svelte';
 
-  // Predefined employee list
-  const employees = [
-    { name: 'Alex', photo: '/images/alex.jpg' },
-    { name: 'Dmiitri', photo: '/images/dmiitri.jpg' },
-    { name: 'Ethan', photo: '/images/ethan.jpg' },
-    { name: 'Yiming', photo: '/images/yiming.jpg' },
-    { name: 'Eugene', photo: '/images/eugene.jpg' },
+  const images = [
+    "images/alex.jpg",
+    "images/dmiitri.jpg",
+    "images/ethan.jpg",
+    "images/eugene.jpg",
+    "images/james.jpg",
+    "images/jie.jpg",
+    "images/mishal.jpg",
+    "images/nan.jpg",
+    "images/shawn.jpg",
+    "images/shivani.jpg",
+    "images/shu.jpg",
+    "images/srini.jpg",
+    "images/srishti.jpg",
+    "images/stefan.jpg",
+    "images/sweekar.jpg",
+    "images/tao.jpg",
+    "images/vicky.jpg",
+    "images/yiming.jpg",
   ];
+
+  const employees = images.map((image) => {
+    const name = image.replace("images/", "").replace(".jpg", "");
+    const capitalizedName = name.charAt(0).toUpperCase() + name.slice(1);
+    return { name: capitalizedName, photo: image };
+  });
 
   let selectedEmployee = null;
   let flashingEmployee = null;
