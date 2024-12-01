@@ -32,8 +32,15 @@
   let flashingEmployee = null;
   let isSelecting = false;
 
+  const removeEmployee = (employee, employees) => {
+    const index = employees.findIndex((e) => e.name === employee.name);
+    if (index !== -1) {
+      employees.splice(index, 1);
+    }
+  };
+
   const pickRandomEmployee = () => {
-    if (isSelecting) return;
+    if (isSelecting || employees.length === 0) return;
 
     isSelecting = true;
     flashingEmployee = null;
@@ -49,6 +56,7 @@
       if (iterations >= maxIterations) {
         clearInterval(interval);
         selectedEmployee = flashingEmployee;
+        removeEmployee(selectedEmployee, employees)
         flashingEmployee = null;
         isSelecting = false;
       }
