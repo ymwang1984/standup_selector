@@ -1,6 +1,4 @@
 <script>
-  import { onMount } from 'svelte';
-
   const images = [
     "images/alex.jpg",
     "images/dmiitri.jpg",
@@ -22,7 +20,7 @@
     "images/yiming.jpg",
   ];
 
-  const employees = images.map((image) => {
+  let employees = images.map((image) => {
     const name = image.replace("images/", "").replace(".jpg", "");
     const capitalizedName = name.charAt(0).toUpperCase() + name.slice(1);
     return { name: capitalizedName, photo: image };
@@ -31,12 +29,10 @@
   let selectedEmployee = null;
   let flashingEmployee = null;
   let isSelecting = false;
+  let selectedEmployees = [];
 
-  const removeEmployee = (employee, employees) => {
-    const index = employees.findIndex((e) => e.name === employee.name);
-    if (index !== -1) {
-      employees.splice(index, 1);
-    }
+  const removeEmployee = (employee) => {
+    employees = employees.filter((e) => e.name !== employee.name);
   };
 
   const pickRandomEmployee = () => {
@@ -56,7 +52,8 @@
       if (iterations >= maxIterations) {
         clearInterval(interval);
         selectedEmployee = flashingEmployee;
-        removeEmployee(selectedEmployee, employees)
+        removeEmployee(selectedEmployee);
+        selectedEmployees = [...selectedEmployees, selectedEmployee];
         flashingEmployee = null;
         isSelecting = false;
       }
@@ -71,8 +68,8 @@
   }
 
   .employee-photo {
-    width: 500px;
-    height: 500px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     margin: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -108,6 +105,20 @@
   button:hover {
     background-color: #0056b3;
   }
+
+  .selected-list {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 10px;
+    margin-top: 20px;
+    gap: 10px;
+  }
+
+  .selected-item {
+    text-align: center;
+    flex: 0 0 auto;
+  }
 </style>
 
 <div class="selector-container">
@@ -136,7 +147,22 @@
   {/if}
 
   <button on:click={pickRandomEmployee} disabled={isSelecting}>
-    {isSelecting ? 'Selecting...' : 'Pick Next'}
+    {isSelecting ? 'Selecting...' : employees.length === 0 ? 'Winner!!' : 'Pick Next'}
   </button>
-</div>
 
+  <div>
+    <h2>Teammates Picked</h2>
+    <div class="selected-list">
+      {#each selectedEmployees as employee}
+        <div class="selected-item">
+          <img
+            src={employee.photo}
+            alt={employee.name}
+            class="employee-photo"
+          />
+          <p class="employee-name">{employee.name}</p>
+        </div>
+      {/each}
+    </div>
+  </div>
+</div>
