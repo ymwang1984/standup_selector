@@ -77,6 +77,16 @@
     object-position: center;
   }
 
+    .employee-photo-picked {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    margin: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+    object-position: center;
+  }
+
   .employee-name {
     font-size: 24px;
     font-weight: bold;
@@ -163,7 +173,7 @@
           <img
             src={employee.photo}
             alt={employee.name}
-            class="employee-photo"
+            class="employee-photo-picked"
           />
           <p class="employee-name">{employee.name}</p>
         </div>
