@@ -18,6 +18,7 @@
     "images/tao.jpg",
     "images/vicky.jpg",
     "images/yiming.jpg",
+    "images/fan.jpg",
   ];
 
   let employees = images.map((image) => {
@@ -94,7 +95,7 @@
   }
 
   .flash {
-    animation: flash 0.3s ease-in-out infinite alternate;
+    animation: flash 0.1s ease-in-out infinite alternate;
   }
 
   @keyframes flash {
