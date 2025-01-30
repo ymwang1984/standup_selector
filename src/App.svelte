@@ -14,7 +14,6 @@
     "images/srini.jpg",
     "images/srishti.jpg",
     "images/stefan.jpg",
-    "images/sweekar.jpg",
     "images/tao.jpg",
     "images/vicky.jpg",
     "images/yiming.jpg",
