@@ -1,23 +1,17 @@
 <script>
   const images = [
-    "images/alex.jpg",
-    "images/dmiitri.jpg",
     "images/ethan.jpg",
-    "images/eugene.jpg",
-    "images/james.jpg",
+    "images/fan.jpg",
     "images/jie.jpg",
     "images/mishal.jpg",
     "images/nan.jpg",
     "images/shawn.jpg",
-    "images/shivani.jpg",
     "images/shu.jpg",
-    "images/srini.jpg",
     "images/srishti.jpg",
     "images/stefan.jpg",
     "images/tao.jpg",
     "images/vicky.jpg",
     "images/yiming.jpg",
-    "images/fan.jpg",
   ];
 
   let employees = images.map((image) => {
