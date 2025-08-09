@@ -1,10 +1,12 @@
 <script>
   const images = [
+    "images/avesta.jpg",
     "images/ethan.jpg",
     "images/fan.jpg",
     "images/jie.jpg",
     "images/mishal.jpg",
     "images/nan.jpg",
+    "images/shash.jpg",
     "images/shawn.jpg",
     "images/shu.jpg",
     "images/srishti.jpg",
