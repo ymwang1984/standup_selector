@@ -5,7 +5,6 @@
     "images/fan.jpg",
     "images/jie.jpg",
     "images/mishal.jpg",
-    "images/nan.jpg",
     "images/shawn.jpg",
     "images/shu.jpg",
     "images/srishti.jpg",
